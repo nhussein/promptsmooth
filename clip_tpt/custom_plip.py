@@ -170,7 +170,7 @@ class PromptLearner(nn.Module):
 
         clip, _, _ = load(arch, device=self.device, download_root=DOWNLOAD_ROOT)
         # loading plip weights to clip arch
-        ckpt_plip = torch.load("/l/users/asif.hanif/pre-trained-models/med-adv-prompt/plip/plip_model_converted.pt")
+        ckpt_plip = torch.load("./pretrained_models/plip/plip_model_converted.pt")
         clip.load_state_dict(ckpt_plip, strict = False)
 
         with torch.no_grad():
@@ -283,7 +283,7 @@ class ClipTestTimeTuning(nn.Module):
         super(ClipTestTimeTuning, self).__init__()
         clip, _, _ = load(arch, device=device, download_root=DOWNLOAD_ROOT)
         # loading plip weights to clip arch
-        ckpt_plip = torch.load("/l/users/asif.hanif/pre-trained-models/med-adv-prompt/plip/plip_model_converted.pt")
+        ckpt_plip = torch.load("./pretrained_models/plip/plip_model_converted.pt")
         clip.load_state_dict(ckpt_plip, strict = False)
         self.image_encoder = clip.visual
         self.text_encoder = TextEncoder(clip)

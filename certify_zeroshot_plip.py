@@ -1,12 +1,12 @@
 # evaluate a smoothed classifier on a dataset
-from data.plip_datasets_clsnames import *
+import os
+import argparse
+import datetime
+import numpy as np 
+from PIL import Image
 from tqdm import tqdm
 from time import time
-import datetime
-from PIL import Image
-import numpy as np 
-import argparse
-import os
+from data.plip_datasets_clsnames import *
 # from copy import deepcopy
 
 from math import ceil
@@ -271,7 +271,7 @@ else:
 print(template)
 
 #load converted plip model weights 
-model_path = '/l/users/asif.hanif/pre-trained-models/med-adv-prompt/plip/plip_model_converted.pt'
+model_path = './pretrained_weights/models/plip/plip_model_converted.pt'
 state_dict = torch.load(model_path)
 model = build_model(state_dict).cuda()
 
