@@ -280,18 +280,14 @@ parser.add_argument('--load', type=str, help='path to fewshot learned weights')
 
 args = parser.parse_args()
 
-args.n=500
-args.dataset= 'kather' #['kather', 'PanNuke', 'SICAPv2', 'SkinCancer']
-args.zeroshot = False
-args.fewshot = True 
-args.sigma = 1.0
-args.arch = 'ViT-B/32'
-args.outfile = "./certification_output/PromptSmooth/PLIP"
-args.load = "./pretrained_weights/few_shot_weights/kather_plip/NoisyCoOp/MixedNoise/vit_b32_ep50_16shots/nctx5_cscFalse_ctpend/seed1/prompt_learner/model.pth.tar-50"
-
-# print()
-# exit()
-
+# args.n=500
+# args.dataset= 'kather' #['kather', 'PanNuke', 'SICAPv2', 'SkinCancer']
+# args.zeroshot = True # or False
+# args.fewshot = True # or False
+# args.sigma = 1.0 # [0.1, 0.25, 0.5, 1.0]
+# args.arch = 'ViT-B/32'
+# args.outfile = "./certification_output/PromptSmooth/PLIP"
+# args.load = "./PromptSmooth/pretrained_weights/fewshot_weights/kather_plip/FewshotPromptSmooth/vit_b32_ep50_16shots/nctx5_cscFalse_ctpend/seed1/prompt_learner/model.pth.tar-50"
 
 
 #-----------------------------------------------------------------------------------------------------
