@@ -316,13 +316,12 @@ else:
 
 
 print('certifying PromptSmooth PLIP for:', args.dataset)
-#classes of each dataset
 classnames =  eval("{}_classes".format(args.dataset.lower()))
 n_classes = len(classnames)
 
-# get dataset
+# Get dataset
 # the 500 images subset can be obtained from script "sample_subset.py". Preferably name your subset the same name as the input dataset_names.
-testdir = '/l/users/noor.hussein/datasets/subsets/{}_100subset/images/test'.format(args.dataset) 
+testdir = './subsets/{}_500subset/images/test'.format(args.dataset) 
 testset = datasets.ImageFolder(testdir, transform=data_transform)
 
 # rearrange classnames according to their idx assignment from ImageFolder
