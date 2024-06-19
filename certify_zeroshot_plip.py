@@ -241,7 +241,7 @@ print('certifying zero-shot PLIP for:',args.dataset)
 classnames =  eval("{}_classes".format(args.dataset.lower()))
 n_classes = len(classnames)
 
-# the 500 images subset can be obtained from script "sample_subset.py". Preferably name your subset the same name as the input dataset_names.
+# the 500 images subset can be obtained from script "sample_subset.py". Preferably name your subset the same name as the input args.datset.
 testdir = './subsets/{}_500subset/images/test'.format(args.dataset) 
 my_transforms = preprocess(224)
 testset = datasets.ImageFolder(testdir, transform=my_transforms)

@@ -320,7 +320,7 @@ classnames =  eval("{}_classes".format(args.dataset.lower()))
 n_classes = len(classnames)
 
 # Get dataset
-# the 500 images subset can be obtained from script "sample_subset.py". Preferably name your subset the same name as the input dataset_names.
+# the 500 images subset can be obtained from script "sample_subset.py". Preferably name your subset the same name as the input args.dataset.
 testdir = './subsets/{}_500subset/images/test'.format(args.dataset) 
 testset = datasets.ImageFolder(testdir, transform=data_transform)
 
