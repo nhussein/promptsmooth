@@ -7,6 +7,12 @@ Official implementation of the paper "PromptSmooth: Certifying Robustness of Med
 
 <hr>
 
+## Updates
+
+* Our paper is accepted at MICCAI 2024 [June 18, 2024]
+
+<hr>
+
 ## Installation
 * #### Setup conda environment
 ```bash
