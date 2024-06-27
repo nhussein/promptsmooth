@@ -1,5 +1,11 @@
-# PromptSmooth
-This is the code base for PromptSmooth: Certifying Robustness of Medical Vision-Language Models via Prompt Learning.
+#  PromptSmooth: Certifying Robustness of Medical Vision-Language Models via Prompt Learning [MICCAI 2024]
+[Noor Hussein](https://ae.linkedin.com/in/noor-hussein-67566a183), [Fahad Shamshad](https://fahadshamshad.github.io/), [Muzammal Naseer](https://muzammal-naseer.com/), [Karthik Nandakumar](https://www.sprintai.org/nkarthik)
+
+[![paper](-)
+
+Official implementation of the paper "PromptSmooth: Certifying Robustness of Medical Vision-Language Models via Prompt Learning".
+
+<hr>
 
 ## Installation
 * #### Setup conda environment
