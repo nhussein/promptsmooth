@@ -1,7 +1,22 @@
-#  PromptSmooth: Certifying Robustness of Medical Vision-Language Models via Prompt Learning [MICCAI 2024]
-[Noor Hussein](https://ae.linkedin.com/in/noor-hussein-67566a183), [Fahad Shamshad](https://fahadshamshad.github.io/), [Muzammal Naseer](https://muzammal-naseer.com/), [Karthik Nandakumar](https://www.sprintai.org/nkarthik)
+#  ***PromptSmooth***: Certifying Robustness of Medical Vision-Language Models via Prompt Learning [MICCAI 2024]
 
-[![paper](-)
+<p align="center">
+
+  <a href="https://ae.linkedin.com/in/noor-hussein-67566a183/">Noor Hussein</a>
+ <a href="https://fahadshamshad.github.io/">Fahad Shamshad</a>
+ <a href="https://muzammal-naseer.com/">Muzammal Naseer</a>
+ <a href="https://scholar.google.com.pk/citations?user=2qx0RnEAAAAJ&hl=en">Karthik Nandakumar</a>
+ <br>
+    <span style="font-size:1em; "><strong> Mohamed bin Zayed University of Artificial Intelligence (MBZUAI), UAE</strong>.</span>
+</p>
+
+  <a href="" target='_blank'>
+      <img src="https://img.shields.io/badge/arXiv-Paper-brown.svg">
+  </a>
+
+  <p align="center">
+    <img src="https://i.imgur.com/waxVImv.png" alt="Image">
+</p>
 
 Official implementation of the paper "PromptSmooth: Certifying Robustness of Medical Vision-Language Models via Prompt Learning".
 
