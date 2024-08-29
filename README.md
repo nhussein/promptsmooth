@@ -2,9 +2,9 @@
 
 <p align="center">
 
-  <a href="https://ae.linkedin.com/in/noor-hussein-67566a183/">Noor Hussein</a>
- <a href="https://fahadshamshad.github.io/">Fahad Shamshad</a>
- <a href="https://muzammal-naseer.com/">Muzammal Naseer</a>
+  <a href="https://ae.linkedin.com/in/noor-hussein-67566a183/">Noor Hussein</a>,
+ <a href="https://fahadshamshad.github.io/">Fahad Shamshad</a>,
+ <a href="https://muzammal-naseer.com/">Muzammal Naseer</a>, and 
  <a href="https://scholar.google.com.pk/citations?user=2qx0RnEAAAAJ&hl=en">Karthik Nandakumar</a>
  <br>
     <span style="font-size:1em; "><strong> Mohamed bin Zayed University of Artificial Intelligence (MBZUAI), UAE</strong>.</span>
@@ -80,4 +80,15 @@ Few-Shot PromptSmooth (noise-level 0.25)
 python ./certify_promptsmooth_plip --n 500 --dataset kather --fewhsot True --sigma 0.25 --arch ViT-B/32 --outfile ./certification_output/PromptSmooth/PLIP --load ./PromptSmooth/pretrained_weights/fewshot_weights/kather_plip/FewshotPromptSmooth/vit_b32_ep50_16shots/nctx5_cscFalse_ctpend/seed1/prompt_learner/model.pth.tar-50
 ```
 For certification of PLIP with PromptSmooth, run the same script with the same arguments. However, set both `--zerohsot True` and `--fewhsot True`.
+
+## Citation
+If you find our work and this repository useful, please consider giving our repo a star and citing our paper as follows:
+```bibtex
+@article{hussein2024promptsmooth,
+  title={PromptSmooth: Certifying Robustness of Medical Vision-Language Models via Prompt Learning},
+  author={Hussein, Noor and Shamshad, Fahad and Naseer, Muzammal and Nandakumar, Karthik},
+  journal={arXiv preprint arXiv:xxxxxxx},
+  year={2024}
+}
+```
 
