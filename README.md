@@ -8,8 +8,8 @@ Official implementation of the paper "PromptSmooth: Certifying Robustness of Med
 <hr>
 
 ## Updates
-
-* Our paper is accepted at MICCAI 2024 [June 18, 2024]
+* Code for PromptSmooth is released. [August 29, 2024]
+* Our paper is accepted at MICCAI 2024. [June 18, 2024]
 
 ## Highlights
 ![methodology](https://github.com/nhussein/promptsmooth/blob/main/PromptSmooth.png)
