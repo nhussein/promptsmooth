@@ -10,7 +10,7 @@
     <span style="font-size:1em; "><strong> Mohamed bin Zayed University of Artificial Intelligence (MBZUAI), UAE</strong>.</span>
 </p>
 
-  <a href="" target='_blank'>
+  <a href="https://arxiv.org/abs/2408.16769" target='_blank'>
       <img src="https://img.shields.io/badge/arXiv-Paper-brown.svg">
   </a>
 
