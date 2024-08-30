@@ -87,7 +87,7 @@ If you find our work and this repository useful, please consider giving our repo
 @article{hussein2024promptsmooth,
   title={PromptSmooth: Certifying Robustness of Medical Vision-Language Models via Prompt Learning},
   author={Hussein, Noor and Shamshad, Fahad and Naseer, Muzammal and Nandakumar, Karthik},
-  journal={arXiv preprint arXiv:xxxxxxx},
+  journal={arXiv preprint arXiv:2408.16769},
   year={2024}
 }
 ```
