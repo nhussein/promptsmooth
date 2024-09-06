@@ -10,31 +10,13 @@ from .clip import load, tokenize
 from .simple_tokenizer import SimpleTokenizer as _Tokenizer
 from data.imagnet_prompts import imagenet_classes
 from data.fewshot_datasets import fewshot_datasets
-# from data.cls_to_names import *
 from data.medclip_datasets_clsnames import *
+from MedCLIP.medclip import MedCLIPModel, MedCLIPVisionModelViT
+from MedCLIP.medclip import MedCLIPProcessor
 
 _tokenizer = _Tokenizer()
 
 DOWNLOAD_ROOT='~/.cache/clip'
-
-# class ClipImageEncoder(nn.Module):
-#     def __init__(self, device, arch="ViT-L/14", image_resolution=224, n_class=1000):
-#         super(ClipImageEncoder, self).__init__()
-#         clip, embed_dim, _ = load(arch, device=device, download_root=DOWNLOAD_ROOT)
-#         self.encoder = clip.visual
-#         del clip.transformer
-#         torch.cuda.empty_cache()
-        
-#         self.cls_head = nn.Linear(embed_dim, n_class)
-    
-#     @property
-#     def dtype(self):
-#         return self.encoder.conv1.weight.dtype
-
-#     def forward(self, image):
-#         x = self.encoder(image.type(self.dtype))
-#         output = self.cls_head(x)
-#         return output
 
 
 class TextEncoder(nn.Module):
@@ -45,18 +27,9 @@ class TextEncoder(nn.Module):
     def forward(self, prompts_embeddings, tokenized_prompts):
 
         output = self.medclip_text_model.model(inputs_embeds=prompts_embeddings, attention_mask=tokenized_prompts['attention_mask'])
-
-        # take the average of last four layers
-        # last_hidden_states = torch.stack(output['hidden_states'][-self.last_n_layer:]) # n_layer, batch, seqlen, emb_dim
-        # embed = last_hidden_states.permute(1,0,2,3)
-        # embed = embed.mean(1).mean(1) # pooling
-
-        # get 1+2+last layer
+        
         last_hidden_states = torch.stack([output['hidden_states'][1], output['hidden_states'][2], output['hidden_states'][-1]]) # n_layer, batch, seqlen, emb_dim
         embed = last_hidden_states.permute(1,0,2,3).mean(2).mean(1) # pooling
-
-        # let's take only the last hidden layer
-        # embed = output['pooler_output']
 
         embed = self.medclip_text_model.projection_head(embed)
         return embed
@@ -75,11 +48,7 @@ class PromptLearner(nn.Module):
         self.device = device
         self.medclip_model = medclip_model
 
-        # self.ctx, prompt_prefix = self.reset_prompt(ctx_dim, ctx_init, medclip_model)
-
         if ctx_init:
-            # raise NotImplementedError("This part is not yet implemented.")
-            # use given words to initialize context vectors
             print("Initializing the contect with given words: [{}]".format(ctx_init))
             ctx_init = ctx_init.replace("_", " ")
             if '[CLS]' in ctx_init:
@@ -92,13 +61,11 @@ class PromptLearner(nn.Module):
             self.split_idx = split_idx
             n_ctx = len(ctx_init.split(" "))
             
-            # prompt = tokenize(ctx_init).to(self.device)
             prompt = ctx_init
             tokenized_prompts = medclip_model.text_model.tokenizer(prompt, padding='max_length', max_length=25, truncation=True, return_tensors='pt').to(self.device)
             prompts_tokens = tokenized_prompts['input_ids']  # [n_cls, 77]
             with torch.no_grad():
                 embedding = medclip_model.text_model.model.embeddings.word_embeddings(prompts_tokens).type(dtype) # [n_cls, 77, 768]
-                # embedding = medclip_model.token_embedding(prompt).type(dtype)
             ctx_vectors = embedding[0, 1 : 1 + n_ctx, :]
             prompt_prefix = ctx_init
         else:
@@ -112,7 +79,6 @@ class PromptLearner(nn.Module):
         print(f'Initial context: "{prompt_prefix}"')
         print(f"Number of context words (tokens): {n_ctx}")
 
-        # batch-wise prompt tuning for test-time adaptation
         if self.batch_size is not None: 
             ctx_vectors = ctx_vectors.repeat(batch_size, 1, 1)  #(N, L, D)
         self.ctx_init_state = ctx_vectors.detach().clone()
@@ -138,9 +104,6 @@ class PromptLearner(nn.Module):
         with torch.no_grad():
             embedding = medclip_model.text_model.model.embeddings.word_embeddings(prompts_tokens).type(dtype) # [n_cls, 77, 768]
 
-        # These token vectors will be saved when in save_model(),
-        # but they should be ignored in load_model() as we want to use
-        # those computed using the current class names
         self.register_buffer("token_prefix", embedding[:, :1, :])  # SOS
         if self.learned_cls:
             self.register_buffer("token_suffix", embedding[:, 1 + n_ctx + 1:, :])  # ..., EOS
@@ -283,13 +246,9 @@ class PromptLearner(nn.Module):
 
         return prompts
 
-from CoOp.MedCLIP.medclip import MedCLIPModel, MedCLIPVisionModelViT
-from CoOp.MedCLIP.medclip import MedCLIPProcessor
-
 def load_medclip_to_cpu():
     model = MedCLIPModel(vision_cls=MedCLIPVisionModelViT)
-    # model.from_pretrained()
-    # model.from_pretrained("/l/users/asif.hanif/pre-trained-models/vlps/medclip/pretrained/medclip-vit/")
+    # Add path for pretrained medclip model
     model.from_pretrained("/home/noor.hussein/certify_TPT/CoOp/pretrained/medclip-vit")
     model.dtype = model.vision_model.model.embeddings.patch_embeddings.projection.weight.dtype
     model.eval()                       
@@ -310,11 +269,6 @@ class ClipTestTimeTuning(nn.Module):
         self.prompt_learner = PromptLearner(self.medclip_model, classnames, self.device, batch_size, n_ctx, ctx_init, ctx_position, learned_cls)
         self.criterion = criterion
         
-    # @property
-    # def dtype(self):
-    #     return self.image_encoder.conv1.weight.dtype
-
-    # restore the initial state of the prompt_learner (tunable prompt)
     def reset(self):
         self.prompt_learner.reset()
 
