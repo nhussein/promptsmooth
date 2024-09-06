@@ -23,6 +23,7 @@ Official implementation of the paper "PromptSmooth: Certifying Robustness of Med
 <hr>
 
 ## Updates
+* QUILT and MedCLIP code. [wil be released soon]
 * Code for PromptSmooth is released. [August 29, 2024]
 * Our paper is accepted at MICCAI 2024. [June 18, 2024]
 
