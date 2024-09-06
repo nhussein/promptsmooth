@@ -47,7 +47,7 @@ conda activate promptsmooth
 ```
 * #### Clone PromptSmooth code repository and install requirements
 ```bash
-cd PromptSmooth/
+cd promptsmooth/
 
 # Install requirements
 pip install -r requirements.txt
