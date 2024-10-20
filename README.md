@@ -80,7 +80,7 @@ Few-Shot PromptSmooth (noise-level 0.25)
 ```
 python ./certify_promptsmooth_plip.py --n 500 --dataset kather --fewhsot True --sigma 0.25 --arch ViT-B/32 --outfile ./certification_output/PromptSmooth/PLIP --load ./PromptSmooth/pretrained_weights/fewshot_weights/kather_plip/FewshotPromptSmooth/vit_b32_ep50_16shots/nctx5_cscFalse_ctpend/seed1/prompt_learner/model.pth.tar-50
 ```
-For certification of PLIP with PromptSmooth, run the same script with the same arguments. However, set both `--zerohsot True` and `--fewhsot True`.
+For certification of PLIP with PromptSmooth (zero-shot + few-shot), run the same script with the same arguments. However, set both `--zerohsot True` and `--fewhsot True`.
 
 ## Citation
 If you find our work and this repository useful, please consider giving our repo a star and citing our paper as follows:
