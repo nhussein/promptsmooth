@@ -63,7 +63,7 @@ The same folder (pretrained_weights) contains the few-shot PromptSmooth learnet 
 ## Data Preparation
 In our paper we use a 500 images subset from each dataset to do the randomized smoothing certification test. You can either use the script `./sample_subset` to create your copy of the subset. However, we made it easier for you, you can just download the available subsets from this [link](https://drive.google.com/file/d/19v3p2b06o67TNENES_o1RgD9e3tT9Fk3/view?usp=sharing). The folder structure then should be `PromptSmooth/subsets/..`.
 
-## Run Certification Scripts (change)
+## Run Certification Scripts
 We provide two python scripts `./certify_zeroshot_plip` and `./certify_promptsmooth_plip`
 
 * #### To certify Zero-shot PLIP:
