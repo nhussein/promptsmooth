@@ -12,6 +12,8 @@
 
   <a href="https://arxiv.org/abs/2408.16769" target='_blank'>
       <img src="https://img.shields.io/badge/arXiv-Paper-brown.svg">
+    ![GitHub views](https://komarev.com/ghpvc/?username=nhussein&label=visitors)
+    ![GitHub stars](https://badgen.net/github/stars/nhussein/PromptSmooth)
   </a>
 
   <p align="center">
